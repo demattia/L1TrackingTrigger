@@ -1,5 +1,5 @@
-AMSimulation package with track prefiltering
-============================================
+AMSimulation Package with Track Prefiltering
+--------------------------------------------
 
 The track prefiltering is done by Filter.C.
 
