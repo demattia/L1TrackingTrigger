@@ -220,11 +220,11 @@ int main(int av, char** ac)
       std::cout << "Analyzed " << int((jentry+1)/(nb_entries/100)) << "% of the events" << std::endl;
     }
 
-    // Check that the track is in the desired pt and eta range
-    if( m_stub > 0 ) {
-      float stubPt = sqrt(pow((*p_m_stub_pxGEN)[0],2) + pow((*p_m_stub_pyGEN)[0],2));
-      if( stubPt < 2. || stubPt > 10. || (*p_m_stub_etaGEN)[0] < -5. || (*p_m_stub_etaGEN)[0] > 5. ) continue;
-    }
+    // // Check that the track is in the desired pt and eta range
+    // if( m_stub > 0 ) {
+    //   float stubPt = sqrt(pow((*p_m_stub_pxGEN)[0],2) + pow((*p_m_stub_pyGEN)[0],2));
+    //   if( stubPt < min || stubPt > max || (*p_m_stub_etaGEN)[0] < minEta || (*p_m_stub_etaGEN)[0] > maxEta ) continue;
+    // }
 
     //initialize arrays
     for(unsigned int j=0;j<active_layers.size();j++){
@@ -256,6 +256,8 @@ int main(int av, char** ac)
     // ----------------------------------------------------------------------------------
     // GENERATED PT AND ETA ARE THE SAME FOR ALL STUBS. MOVE THE CHECKS OUTSIDE THE LOOP.
     // ----------------------------------------------------------------------------------
+    // Might be an issue if there is more than one generated track in the event. Leave it like this for now.
+    // -----------------------------------------------------------------------------------------------------
 
     //check the layers of the stubs
     for(int j=0;j<m_stub;j++){
