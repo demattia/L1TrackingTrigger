@@ -3,7 +3,7 @@ import os, sys
 # Important configuration
 # -----------------------
 executableDir = "/uscms_data/d3/demattia/Upgrade/CMSSW_6_1_2_SLHC6_patch1/src/amsimulation/"
-sectorFile = "/uscms_data/d2/souvik/HLLHC/CMSSW_6_1_2_SLHC6_patch1/src/amsimulation/trigger_sector_map.csv"
+sectorFile = "/eos/uscms/store/user/lpcdve/noreplica/Upgrade/trigger_sector_map.csv"
 # -----------------------
 
 
@@ -126,8 +126,8 @@ activeLayersList.append("5 6 11 12 13 14 15")
 
 # Filter low pt tracks
 # --------------------
-# filesDirLowPt = "/eos/uscms/store/user/l1upgrades/SLHC/GEN/612_SLHC6_MUBANK_low/"
-# filterAllFiles(sectorIdList, activeLayersList, filesDirLowPt)
+filesDirLowPt = "/eos/uscms/store/user/l1upgrades/SLHC/GEN/612_SLHC6_MUBANK_low/"
+filterAllFiles(sectorIdList, activeLayersList, filesDirLowPt)
 
 
 # Filter mid pt tracks
