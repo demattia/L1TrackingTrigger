@@ -3,13 +3,14 @@ import os
 # Number of events per job and number of jobs
 maxEvents = 50000
 numJobs = 400
+destinationDir = "/eos/uscms/store/user/lpcdve/noreplica/Upgrade/MuonGun/CentralSector/"
 
 # Configuration of the particle gun. It produces a particle-antiparticle back-to-back pair
 particleId = -13 # muon gun
 maxOneOverPt = 1./2.
 minOneOverPt = 1./200.
-maxEta = -0.88
-minEta = -2.
+maxEta = 0.17
+minEta = -1.85
 maxPhi = 1.05
 minPhi = -0.22
 
@@ -61,7 +62,7 @@ cd /uscms/home/demattia/d3/Upgrade/CMSSW_6_2_0_SLHC12/src/
 eval `scram runtime -sh`
 cd -
 cmsRun """+newCfgName+"""
-cp """+outputFileName+""" /eos/uscms/store/user/lpcdve/noreplica/Upgrade/MuonGun/ForwardSector/
+cp """+outputFileName+" "+destinationDir+""" 
 rm """+outputFileName+"""
 """
 )
@@ -86,4 +87,4 @@ Queue 1
 
 
     print "condor_submit "+condorFileName
-    # os.system("condor_submit "+condorFileName)
+    os.system("condor_submit "+condorFileName)
