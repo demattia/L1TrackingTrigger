@@ -1,16 +1,17 @@
 import os
 
-# Number of events per job
-maxEvents = 10000
+# Number of events per job and number of jobs
+maxEvents = 50000
+numJobs = 400
 
 # Configuration of the particle gun. It produces a particle-antiparticle back-to-back pair
 particleId = -13 # muon gun
 maxOneOverPt = 1./2.
 minOneOverPt = 1./200.
-maxEta = 2.5
-minEta = -2.5
-maxPhi = 3.14159265359
-minPhi = -3.14159265359
+maxEta = -0.88
+minEta = -2.
+maxPhi = 1.05
+minPhi = -0.22
 
 # This paramter decides whether the vertex is prompt or not.
 # If false the *FlatSpread parameters are ignored.
@@ -27,7 +28,7 @@ g4SimHitsSeed = 3
 mixSeed = 4
 
 
-for index in range(100):
+for index in range(1, numJobs+1):
     print "index =", index
     newCfgName = "FlatRandomOneOverPtMuonGun_cfg_"+str(index)+".py"
     outputFileName = "MuonGun_"+str(index)+".root"
@@ -60,7 +61,7 @@ cd /uscms/home/demattia/d3/Upgrade/CMSSW_6_2_0_SLHC12/src/
 eval `scram runtime -sh`
 cd -
 cmsRun """+newCfgName+"""
-cp """+outputFileName+""" /eos/uscms/store/user/lpcdve/noreplica/Upgrade/MuonGun/
+cp """+outputFileName+""" /eos/uscms/store/user/lpcdve/noreplica/Upgrade/MuonGun/ForwardSector/
 rm """+outputFileName+"""
 """
 )
@@ -85,4 +86,4 @@ Queue 1
 
 
     print "condor_submit "+condorFileName
-    os.system("condor_submit "+condorFileName)
+    # os.system("condor_submit "+condorFileName)
