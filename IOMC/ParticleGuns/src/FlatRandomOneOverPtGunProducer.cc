@@ -76,7 +76,11 @@ void FlatRandomOneOverPtGunProducer::produce(Event &e, const EventSetup& es) {
     double eta    = fRandomGenerator->fire(fMinEta, fMaxEta) ;
     double phi    = fRandomGenerator->fire(fMinPhi, fMaxPhi) ;
     if (pt != 0) pt = 1./pt;
+
     int PartID = fPartIDs[ip] ;
+    double charge   = fRandomGenerator->fire(0,1);
+    if (charge<0.5) PartID = -PartID;
+
     const HepPDT::ParticleData* 
       PData = fPDGTable->particle(HepPDT::ParticleID(abs(PartID))) ;
     double mass   = PData->mass().value() ;
